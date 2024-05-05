@@ -1,4 +1,5 @@
 
+print("Welcome to your budgeting app")
 
 def create_menu():
     print("1. Enter 1 to set a savings goal")
@@ -10,3 +11,11 @@ def create_menu():
 
     user_choice = input("Enter your selection: ")
     return user_choice
+
+choice = ""
+
+while choice != "6":
+    choice = create_menu()
+
+    if choice == 1:
+        print
