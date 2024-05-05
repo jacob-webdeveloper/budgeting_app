@@ -26,9 +26,14 @@ while choice != "6":
             goals_file.write("Goal,Amount\n")
             goals_file.close()
         add_goal("goals.csv")
+
     elif choice == "2":
-        
-        goal_progress("goals.csv")
+        if (not os.path.isfile("goals.csv")):
+            print("No goals in progress")
+        else:
+            (os.path.isfile("goals.csv"))
+            goal_progress("goals.csv")
+            
     elif choice == "3":
         print("You have selected 3")
     elif choice == "4":
