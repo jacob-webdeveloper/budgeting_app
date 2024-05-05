@@ -1,6 +1,6 @@
 import os.path
 
-from functions import add_goal
+from functions import add_goal, goal_progress
 
 print("Welcome to your budgeting app")
 
@@ -27,7 +27,8 @@ while choice != "6":
             goals_file.close()
         add_goal("goals.csv")
     elif choice == "2":
-        print("You have selected 2")
+        
+        goal_progress("goals.csv")
     elif choice == "3":
         print("You have selected 3")
     elif choice == "4":
