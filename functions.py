@@ -43,6 +43,23 @@ def view(filename):
             print(f"You have ${row[1]} remaining in you {row[0]} goal.")
 
 
+def add_expense(filename):
+    with open("expenses.csv", "r") as f:
+        reader = csv.reader(f)
+        reader.__next__()
+        for row in reader:
+            print(f"You spent {row[1]} on {row[0]}")
+    
+    expense = input("Enter what you spent the money on: ")
+    amount_spent = int(input(f"Enter the amount that you spent on {expense}: "))
+
+    with open("expenses.csv", "a") as f:
+        writer = csv.writer(f)
+        writer.writerow([expense, amount_spent])
+
+    
+
+
     
 
     
