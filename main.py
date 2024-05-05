@@ -1,6 +1,6 @@
 import os.path
 
-from functions import add_goal, goal_progress
+from functions import add_goal, goal_progress, view
 
 print("Welcome to your budgeting app")
 
@@ -36,9 +36,17 @@ while choice != "7":
             goal_progress("goals.csv")
 
     elif choice == "3":
-        print("You have selected 3")
+        if (not os.path.isfile("goals.csv")):
+            print("No goals in progress")
+        else:
+            (os.path.isfile("goals.csv"))
+            view("goals.csv")
+
     elif choice == "4":
-        print("You have selected 4")
+        if (not os.path.isfile("expenses.csv")):
+            goals_file = open("expenses.csv", "w")
+            goals_file.write("Goal,Amount\n")
+            goals_file.close()
     elif choice == "5":
         print("You have selected 5")
     elif choice == "6":

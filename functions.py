@@ -35,7 +35,7 @@ def goal_progress(filename):
         writer.writerows(goal_lists)
 
 
-def goal_view(filename):
+def view(filename):
     with open("goals.csv", "r") as f:
         reader = csv.reader(f)
         reader.__next__()
