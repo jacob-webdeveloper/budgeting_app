@@ -1,5 +1,6 @@
 import os.path
 
+from functions import add_goal
 
 print("Welcome to your budgeting app")
 
@@ -14,18 +15,6 @@ def create_menu():
     user_choice = input("Enter your selection: ")
     return user_choice
 
-
-
-
-
-
-
-
-
-
-
-
-
 choice = ""
 
 while choice != "6":
@@ -34,9 +23,9 @@ while choice != "6":
     if (choice == "1"):
         if (not os.path.isfile("goals.csv")):
             goals_file = open("goals.csv", "w")
-            goals_file.write("Goal, Amount\n")
+            goals_file.write("Goal,Amount\n")
             goals_file.close()
-        
+        add_goal("goals.csv")
     elif choice == "2":
         print("You have selected 2")
     elif choice == "3":
