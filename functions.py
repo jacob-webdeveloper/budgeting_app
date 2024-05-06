@@ -18,7 +18,7 @@ def goal_progress(filename):
     
     goal_name = input("Enter the goal that you want to add progress towards: ")
     amount_progress = int(input(f"Enter the amount that you want to put towards {goal_name}: "))
-    
+   
     goal_lists = []
     with open("goals.csv", "r") as f:
         reader = csv.reader(f)
@@ -79,6 +79,15 @@ def view_expense(filename):
         reader.__next__()
         for row in reader:
             print(f"Spent ${row[1]} on {row[0]}")
+
+    with open("expenses.csv", "r") as f:
+        reader = csv.reader(f)
+        reader.__next__()
+        total_expenses = 0
+        for row in reader:
+            total_expenses += int(row[1])
+        
+        print(f"You spent a total of ${total_expenses}\n")
 
     
 
