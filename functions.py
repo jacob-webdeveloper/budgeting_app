@@ -35,7 +35,7 @@ def goal_progress(filename):
         writer.writerows(goal_lists)
 
 
-def view(filename):
+def view_goal(filename):
     with open("goals.csv", "r") as f:
         reader = csv.reader(f)
         reader.__next__()
@@ -44,11 +44,6 @@ def view(filename):
 
 
 def add_expense(filename):
-    with open("expenses.csv", "r") as f:
-        reader = csv.reader(f)
-        reader.__next__()
-        for row in reader:
-            print(f"You spent {row[1]} on {row[0]}")
     
     expense = input("Enter what you spent the money on: ")
     amount_spent = int(input(f"Enter the amount that you spent on {expense}: "))
@@ -56,6 +51,36 @@ def add_expense(filename):
     with open("expenses.csv", "a") as f:
         writer = csv.writer(f)
         writer.writerow([expense, amount_spent])
+
+
+def remove_expense(filename):
+    expenses_list = []
+    with open("expenses.csv", "r") as f:
+        reader = csv.reader(f)
+        reader.__next__()
+        for row in reader:
+            print(f"You spent ${row[1]} on {row[0]}")
+        rm_expense = input("What expense would you like to remove?")
+    
+    with open("expenses.csv", "r") as f:
+        reader = csv.reader(f)
+        for row in reader:
+            if rm_expense != row[0]:
+                expenses_list.append(row)
+    
+    with open("expenses.csv", "w") as f:
+        writer = csv.writer(f)
+        writer.writerows(expenses_list)
+                
+
+def view_expense(filename):
+    with open("expenses.csv", "r") as f:
+        reader = csv.reader(f)
+        reader.__next__()
+        for row in reader:
+            print(f"Spent ${row[1]} on {row[0]}")
+
+    
 
     
 
