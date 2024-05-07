@@ -1,38 +1,44 @@
 import csv
 
 def add_goal(filename):
-    goal = input("Enter a Budgeting Goal: ")
-    amount = int(input("Enter the amount of savings needed: "))
-    with open("goals.csv", "a") as f:
-        writer = csv.writer(f)
-        writer.writerow([goal, amount])
-
+    try:
+        goal = input("Enter a Budgeting Goal: ")
+        amount = int(input("Enter the amount of savings needed: "))
+        with open("goals.csv", "a") as f:
+            writer = csv.writer(f)
+            writer.writerow([goal, amount])
+    except ValueError:
+        print("That wasn't a dollar amount.")
 
 
 def goal_progress(filename):
-    with open("goals.csv", "r") as f:
-        reader = csv.reader(f)
-        reader.__next__()
-        for row in reader:
-            print(f"Your {row[0]} has {row[1]} dollars remaining")
+    try:
+        with open("goals.csv", "r") as f:
+            reader = csv.reader(f)
+            reader.__next__()
+            for row in reader:
+                print(f"Goal: {row[0]} | Amount Remaining: ${row[1]}")
+        
+        goal_name = input("Enter the goal that you want to add progress towards: ")
+        amount_progress = int(input(f"Enter the amount that you want to put towards {goal_name}: "))
     
-    goal_name = input("Enter the goal that you want to add progress towards: ")
-    amount_progress = int(input(f"Enter the amount that you want to put towards {goal_name}: "))
-   
-    goal_lists = []
-    with open("goals.csv", "r") as f:
-        reader = csv.reader(f)
-        for row in reader:
-            if goal_name != row[0]:
-                goal_lists.append(row)
-            else:
-                original_value = int(row[1])
-                new_value = original_value - amount_progress
-                goal_lists.append([row[0], int(new_value)])
+        goal_lists = []
+        with open("goals.csv", "r") as f:
+            reader = csv.reader(f)
+            for row in reader:
+                if goal_name != row[0]:
+                    goal_lists.append(row)
+                else:
+                    original_value = int(row[1])
+                    new_value = original_value - amount_progress
+                    goal_lists.append([row[0], int(new_value)])
 
-    with open(filename, "w") as f:
-        writer = csv.writer(f)
-        writer.writerows(goal_lists)
+        with open(filename, "w") as f:
+            writer = csv.writer(f)
+            writer.writerows(goal_lists)
+
+    except ValueError:
+        print("That wasn't a dollar amount.")
 
 
 def view_goal(filename):
@@ -43,14 +49,19 @@ def view_goal(filename):
             print(f"You have ${row[1]} remaining in you {row[0]} goal.")
 
 
-def add_expense(filename):
-    
-    expense = input("Enter what you spent the money on: ")
-    amount_spent = int(input(f"Enter the amount that you spent on {expense}: "))
 
-    with open("expenses.csv", "a") as f:
-        writer = csv.writer(f)
-        writer.writerow([expense, amount_spent])
+def add_expense(filename):
+    try:
+        expense = input("Enter what you spent the money on: ")
+        amount_spent = int(input(f"Enter the amount that you spent on {expense}: "))
+
+        with open("expenses.csv", "a") as f:
+            writer = csv.writer(f)
+            writer.writerow([expense, amount_spent])
+
+    except ValueError:
+        print("Please enter a number")
+
 
 
 def remove_expense(filename):
@@ -60,7 +71,9 @@ def remove_expense(filename):
         reader.__next__()
         for row in reader:
             print(f"You spent ${row[1]} on {row[0]}")
-        rm_expense = input("What expense would you like to remove?")
+        rm_expense = str(input("What expense would you like to remove?"))
+
+
     
     with open("expenses.csv", "r") as f:
         reader = csv.reader(f)
@@ -88,7 +101,7 @@ def view_expense(filename):
             total_expenses += int(row[1])
         
         print(f"You spent a total of ${total_expenses}\n")
-
+    
     
 
     
