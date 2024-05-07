@@ -1,14 +1,12 @@
 import csv
 
 def add_goal(filename):
-    try:
         goal = input("Enter a Budgeting Goal: ")
         amount = int(input("Enter the amount of savings needed: "))
         with open("goals.csv", "a") as f:
             writer = csv.writer(f)
             writer.writerow([goal, amount])
-    except ValueError:
-        print("That wasn't a dollar amount.")
+    
 
 
 def goal_progress(filename):
@@ -70,7 +68,7 @@ def remove_expense(filename):
         reader = csv.reader(f)
         reader.__next__()
         for row in reader:
-            print(f"You spent ${row[1]} on {row[0]}")
+            print(f"Category: ${row[0]} | Amount Spent: {row[1]}")
         rm_expense = str(input("What expense would you like to remove?"))
 
 

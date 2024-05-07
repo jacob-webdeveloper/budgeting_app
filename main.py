@@ -1,8 +1,10 @@
 import os.path
 
+from colored import Fore, Back, Style
+
 from functions import add_goal, goal_progress, view_goal, add_expense, remove_expense, view_expense
 
-print("Welcome to your budgeting app")
+print(f"{Back.dark_blue}{Fore.cyan + 'Welcome to your budgeting app'}")
 
 def create_menu():
     print("1. Enter 1 to set a savings goal")
