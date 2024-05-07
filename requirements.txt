@@ -1,0 +1,2 @@
+colored==2.2.4
+python version 3.9 or newer
