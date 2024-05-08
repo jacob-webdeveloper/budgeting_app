@@ -2,18 +2,19 @@ import os.path
 
 from colored import Fore, Back, Style
 
-from functions import add_goal, goal_progress, view_goal, add_expense, remove_expense, view_expense
+from functions import add_goal, goal_progress, view_goal, add_expense, remove_expense, view_expense, remove_goal
 
 print(f"{Back.dark_blue}{Fore.cyan + 'Welcome to your budgeting app'}")
 
 def create_menu():
     print("1. Enter 1 to set a savings goal")
     print("2. Enter 2 to add progress towards a savings goal")
-    print("3. Enter 3 to view savings goals")
-    print("4. Enter 4 to add expenses")
-    print("5. Enter 5 to remove expenses")
-    print("6. Enter 6 to view expenses")
-    print("7. Enter 7 to exit")
+    print("3. Enter 3 to remove a savings goal")
+    print("4. Enter 4 to view savings goals")
+    print("5. Enter 5 to add expenses")
+    print("6. Enter 6 to remove expenses")
+    print("7. Enter 7 to view expenses")
+    print("8. Enter 8 to exit")
 
     user_choice = input("Enter your selection: ")
     return user_choice

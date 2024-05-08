@@ -39,21 +39,21 @@ def goal_progress(filename):
         print("That wasn't a dollar amount.")
 
 
-def remove_goal(filename)
- goals_list = []
+def remove_goal(filename):
+    goals_list = []
     with open("goals.csv", "r") as f:
         reader = csv.reader(f)
         reader.__next__()
         for row in reader:
             print(f"Goal: {row[0]} | Amount left to save: ${row[1]}")
         rm_goal = str(input("What goal would you like to remove?"))
-    
+
     with open("goals.csv", "r") as f:
         reader = csv.reader(f)
         for row in reader:
             if rm_goal != row[0]:
                 goals_list.append(row)
-    
+
     with open("goals.csv", "w") as f:
         writer = csv.writer(f)
         writer.writerows(goals_list)
