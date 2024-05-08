@@ -45,8 +45,8 @@ def remove_goal(filename)
         reader = csv.reader(f)
         reader.__next__()
         for row in reader:
-            print(f"Expense: {row[0]} | Amount Spent: ${row[1]}")
-        rm_goal = str(input("What expense would you like to remove?"))
+            print(f"Goal: {row[0]} | Amount left to save: ${row[1]}")
+        rm_goal = str(input("What goal would you like to remove?"))
     
     with open("goals.csv", "r") as f:
         reader = csv.reader(f)
