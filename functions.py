@@ -39,6 +39,11 @@ def goal_progress(filename):
         print("That wasn't a dollar amount.")
 
 
+def remove_goal(filename)
+
+
+
+
 def view_goal(filename):
     with open("goals.csv", "r") as f:
         reader = csv.reader(f)
