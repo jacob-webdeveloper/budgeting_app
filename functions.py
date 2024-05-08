@@ -68,7 +68,7 @@ def remove_expense(filename):
         reader = csv.reader(f)
         reader.__next__()
         for row in reader:
-            print(f"Category: ${row[0]} | Amount Spent: {row[1]}")
+            print(f"Expense: {row[0]} | Amount Spent: ${row[1]}")
         rm_expense = str(input("What expense would you like to remove?"))
 
 
